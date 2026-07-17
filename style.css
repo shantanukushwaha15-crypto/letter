@@ -1,0 +1,499 @@
+/* ===========================
+   RESET
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    background:linear-gradient(135deg,#f8e8ff,#ffe7f3);
+    overflow:hidden;
+    font-family:"Poppins",sans-serif;
+}
+
+/* ===========================
+   CONTAINER
+=========================== */
+
+.container{
+    position:relative;
+}
+
+/* ===========================
+   ENVELOPE
+=========================== */
+
+#envelope{
+
+    position:relative;
+
+    width:340px;
+    height:230px;
+
+    cursor:pointer;
+
+    perspective:1000px;
+}
+
+/* ===========================
+   LETTER
+=========================== */
+
+.letter{
+
+    position:absolute;
+
+    width:310px;
+    height:420px;
+
+    left:15px;
+    bottom:0;
+
+    background:#fff;
+
+    border-radius:15px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.18);
+
+    z-index:1;
+
+    padding:25px;
+
+    transition:1s ease;
+
+    overflow-y:auto;
+overflow-x:hidden;
+scrollbar-width:thin;
+}
+
+/* Photo */
+
+.photo{
+
+    width:140px;
+    height:140px;
+
+    border-radius:50%;
+
+    display:block;
+
+    margin:auto;
+
+    object-fit:cover;
+
+    border:3px solid white;
+
+    box-shadow:0 4px 12px rgba(0,0,0,0.2);
+}
+/* Text */
+
+.letter h2{
+
+    text-align:center;
+
+    color:#e91e63;
+
+    margin:18px 0;
+
+    font-family:"Dancing Script",cursive;
+
+    font-size:32px;
+}
+
+.letter p{
+
+    text-align:center;
+
+    line-height:1.8;
+
+    color:#555;
+
+    margin-top:12px;
+
+    font-size:17px;
+}
+
+.letter h3{
+
+    margin-top:18px;
+
+    text-align:center;
+
+    color:#ff2d75;
+
+    font-family:"Dancing Script",cursive;
+
+    font-size:30px;
+}
+
+/* ===========================
+   BACK
+=========================== */
+
+.back{
+
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    background:#ff6b6b;
+
+    border-radius:8px;
+
+    z-index:2;
+}
+
+/* ===========================
+   LEFT
+=========================== */
+
+.left{
+
+    position:absolute;
+
+    width:0;
+    height:0;
+
+    border-top:115px solid transparent;
+    border-bottom:115px solid transparent;
+    border-left:170px solid #f6a2a2;
+
+    z-index:4;
+}
+
+/* ===========================
+   RIGHT
+=========================== */
+
+.right{
+
+    position:absolute;
+
+    right:0;
+
+    width:0;
+    height:0;
+
+    border-top:115px solid transparent;
+    border-bottom:115px solid transparent;
+    border-right:170px solid #ef9797;
+
+    z-index:4;
+}
+
+/* ===========================
+   BOTTOM
+=========================== */
+
+.bottom{
+
+    position:absolute;
+
+    bottom:0;
+
+    width:0;
+    height:0;
+
+    border-left:170px solid transparent;
+    border-right:170px solid transparent;
+    border-bottom:115px solid #ff7373;
+
+    z-index:5;
+}
+
+/* ===========================
+   FLAP
+=========================== */
+
+.flap{
+
+    position:absolute;
+
+    width:0;
+    height:0;
+
+    border-left:170px solid transparent;
+    border-right:170px solid transparent;
+    border-top:120px solid #d94d4d;
+
+    transform-origin:top;
+
+    transition:.8s;
+
+    z-index:6;
+}
+/* ===========================
+   OPEN ANIMATION
+=========================== */
+#envelope.open .letter{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%) scale(1.2);
+    z-index:9999;
+    transition:all .8s ease;
+}
+
+/* ===========================
+   HEARTS
+=========================== */
+
+.background-hearts{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+}
+
+.background-hearts::before,
+.background-hearts::after{
+    content:"❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️";
+    position:absolute;
+    width:100%;
+    font-size:28px;
+    opacity:.15;
+    animation:heartsMove 18s linear infinite;
+}
+
+.background-hearts::after{
+    animation-delay:9s;
+}
+
+@keyframes heartsMove{
+
+    0%{
+        transform:translateY(100vh);
+    }
+
+    100%{
+        transform:translateY(-120vh);
+    }
+
+}
+
+/* ===========================
+   PHOTO GLOW
+=========================== */
+
+.photo{
+    animation:softGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes softGlow{
+
+    from{
+        box-shadow:0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    to{
+        box-shadow:0 8px 20px rgba(0,0,0,0.25);
+    }
+
+}
+
+}
+
+/* ===========================
+   SPARKLES
+=========================== */
+
+.letter::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        radial-gradient(circle,#ffffff 2px,transparent 3px),
+        radial-gradient(circle,#ffd6eb 2px,transparent 3px);
+
+    background-size:80px 80px;
+
+    opacity:.4;
+
+    animation:sparkles 8s linear infinite;
+
+    pointer-events:none;
+}
+
+@keyframes sparkles{
+
+    from{
+        background-position:0 0,40px 40px;
+    }
+
+    to{
+        background-position:80px -80px,120px -40px;
+    }
+
+}
+
+/* ===========================
+   ENVELOPE SHADOW
+=========================== */
+
+#envelope::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    bottom:-25px;
+
+    width:250px;
+
+    height:20px;
+
+    background:rgba(0,0,0,.18);
+
+    border-radius:50%;
+
+    filter:blur(10px);
+
+}
+
+/* ===========================
+   HOVER EFFECT
+=========================== */
+
+#envelope:hover{
+    transform:translateY(-5px);
+    transition:.3s;
+}
+/* ===========================
+   FLOATING HEARTS
+=========================== */
+
+.floating-hearts{
+    position:absolute;
+    width:100%;
+    height:100%;
+    left:0;
+    top:0;
+    pointer-events:none;
+    z-index:20;
+}
+
+.f-heart{
+    position:absolute;
+    width:18px;
+    height:18px;
+    background:#ff2d75;
+    transform:rotate(-45deg);
+    opacity:0;
+}
+
+.f-heart::before,
+.f-heart::after{
+    content:"";
+    position:absolute;
+    width:18px;
+    height:18px;
+    background:#ff2d75;
+    border-radius:50%;
+}
+
+.f-heart::before{
+    top:-9px;
+    left:0;
+}
+
+.f-heart::after{
+    left:9px;
+    top:0;
+}
+
+.h1{left:90px;bottom:35px;}
+.h2{left:130px;bottom:25px;}
+.h3{left:170px;bottom:30px;}
+.h4{left:210px;bottom:25px;}
+.h5{left:250px;bottom:35px;}
+
+#envelope.open .h1{animation:floatHeart 3s linear infinite;}
+#envelope.open .h2{animation:floatHeart 3.4s linear infinite .3s;}
+#envelope.open .h3{animation:floatHeart 3.8s linear infinite .6s;}
+#envelope.open .h4{animation:floatHeart 4.2s linear infinite .9s;}
+#envelope.open .h5{animation:floatHeart 4.6s linear infinite 1.2s;}
+
+@keyframes floatHeart{
+
+    0%{
+        transform:translateY(0) rotate(-45deg) scale(.5);
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-260px) rotate(-45deg) scale(1.4);
+        opacity:0;
+    }
+
+}
+/* Hide envelope after opening */
+
+#envelope.hide-envelope .back,
+#envelope.hide-envelope .left,
+#envelope.hide-envelope .right,
+#envelope.hide-envelope .bottom,
+#envelope.hide-envelope .flap{
+
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .5s ease;
+
+}
+
+/* Keep the letter visible */
+
+#envelope.hide-envelope .letter{
+
+    z-index:100;
+}
+#envelope.hide-envelope .back,
+#envelope.hide-envelope .left,
+#envelope.hide-envelope .right,
+#envelope.hide-envelope .bottom,
+#envelope.hide-envelope .flap{
+
+    opacity:0;
+    transform:scale(.9);
+    transition:all .6s ease;
+}
+/* ===========================
+   LETTER SCROLLBAR
+=========================== */
+
+.letter::-webkit-scrollbar{
+    width:8px;
+}
+
+.letter::-webkit-scrollbar-track{
+    background:#ffe6ef;
+    border-radius:20px;
+}
+
+.letter::-webkit-scrollbar-thumb{
+    background:#ff4f81;
+    border-radius:20px;
+}
+
+.letter::-webkit-scrollbar-thumb:hover{
+    background:#e91e63;
+}
